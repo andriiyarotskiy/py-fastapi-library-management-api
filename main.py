@@ -5,20 +5,11 @@ from sqlalchemy.orm import Session
 
 import crud
 import schemas
-from database import SessionLocal, engine
+from database import engine
 from models import Base
 
 # Create tables in the database
 Base.metadata.create_all(bind=engine)
-
-
-# Dependency to get DB session
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 def get_session():
